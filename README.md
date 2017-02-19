@@ -1,5 +1,5 @@
 # mp3player
-A basic mp3 player 
+A basic mp3 player made for fun
 
 ## Features
 * choose adirectory in which songs are kept
