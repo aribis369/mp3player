@@ -1,14 +1,19 @@
 # mp3player
-A basic mp3 player made for fun
+A basic mp3 player 
+## Language Used
+Python 2.7
 
 ## Features
-* choose adirectory in which songs are kept
+* browse a directory in which songs are kept
 * common buttons of a mp3 player(play,stop,next track,previous track)
+* volume up and down buttons
 
 ## Future Developments
-* browse to other directory using the UI
-* displaying name of track,artist etc. using the metadata of the track
-* better design
+* better GUI design
 
 ## Screenshots
-![mp3img](player.png)
+### Shows name of Artist and the Track  
+![mp3img](p2.png)
+### We can now browse folders where .mp3 files are kept from the UI
+![imgmp3](p1.png)
+
