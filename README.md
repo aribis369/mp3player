@@ -2,6 +2,9 @@
 A basic mp3 player 
 ## Language Used
 Python 2.7
+## Dependencies
+* Tkinter
+* pygame
 
 ## Features
 * browse a directory in which songs are kept
