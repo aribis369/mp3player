@@ -5,12 +5,12 @@ import tkFileDialog
 
 
 
-master=Tk()
+master = Tk()
 master.minsize(360,70)
 master.title("AB369Player")
 
-trkno=0
-songs=[]
+trkno = 0
+songs = []
 def browse():
     global songs
     global dir
@@ -26,7 +26,7 @@ def browse():
 
 
 
-dir=tkFileDialog.askdirectory()
+dir = tkFileDialog.askdirectory()
 os.chdir(dir)
 for i in os.listdir(dir):
     if i.endswith(".mp3"):
@@ -56,7 +56,7 @@ def nexttrk():
     global trkname
     global trkno
     global songs
-    trkno+=1
+    trkno += 1
     pygame.mixer.music.load(songs[trkno])
     pygame.mixer.music.play()
     trkname.set((str(songs[trkno])).replace(".mp3",""))
@@ -66,7 +66,7 @@ def prevtrk():
     global trkname
     global trkno
     global songs
-    trkno-=1
+    trkno -= 1
     pygame.mixer.music.load(songs[trkno])
     pygame.mixer.music.play()
     trkname.set((str(songs[trkno])).replace(".mp3",""))
@@ -75,18 +75,18 @@ def prevtrk():
 def voli():
     global vol
     vol=pygame.mixer.music.get_volume()
-    vol+=0.1
+    vol += 0.1
     if vol>=0.9921875:
-        vol=0.9921875
+        vol = 0.9921875
     pygame.mixer.music.set_volume(vol)
 
 
 def vold():
     global vol
     vol=pygame.mixer.music.get_volume()
-    vol-=0.1
+    vol -= 0.1
     if vol<0:
-        vol=0.0
+        vol = 0.0
     pygame.mixer.music.set_volume(vol)
 
 
@@ -94,8 +94,8 @@ font1='Courier', 25, 'bold'
 font2='Courier', 15, 'bold'
 
 trkname=StringVar()
-pi=0
-vol=1
+pi = 0
+vol = 1
 Button(master,text='>>|',command=nexttrk).grid(row=1,column=3,sticky=W,pady=4)
 Button(master,text='|<<',command=prevtrk).grid(row=1,column=0,sticky=W,pady=4)
 Button(master,text='||',command=stop).grid(row=1,column=1,sticky=W,pady=4)
