@@ -2,6 +2,8 @@ from Tkinter import *
 import os
 import pygame
 import tkFileDialog
+import numpy as np
+import pandas as pd
 
 
 
@@ -24,7 +26,8 @@ def browse():
     pygame.mixer.init()
     pygame.mixer.music.load(songs[0])
 
-
+a=np.zeros(56)
+print a
 
 dir = tkFileDialog.askdirectory()
 os.chdir(dir)
