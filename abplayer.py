@@ -1,43 +1,33 @@
-from Tkinter import *
+from tkinter import *
+from tkinter import filedialog
 import os
 import pygame
-import tkFileDialog
 import numpy as np
 import pandas as pd
-
-
 
 master = Tk()
 master.minsize(360,70)
 master.title("AB369Player")
 
+pi=0
 trkno = 0
 songs = []
 def browse():
     global songs
     global dir
-    songs=[]
-    dir=tkFileDialog.askdirectory()
+    dir=filedialog.askdirectory()
     os.chdir(dir)
-    for i in os.listdir(dir):
-        if i.endswith(".mp3"):
-            songs.append(i)
-    print songs
+    for song in os.listdir(dir):
+        if song.endswith(".mp3"):
+            songs.append(song)
+    for index,song in enumerate(songs):
+        print('{}. {}'.format(index,song))
     pygame.mixer.init()
-    pygame.mixer.music.load(songs[0])
-
-a=np.zeros(56)
-print a
-
-dir = tkFileDialog.askdirectory()
-os.chdir(dir)
-for i in os.listdir(dir):
-    if i.endswith(".mp3"):
-        songs.append(i)
-print songs
-pygame.mixer.init()
-pygame.mixer.music.load(songs[0])
-
+    if len(songs)>=1:
+        try:
+            pygame.mixer.music.load(songs[0])
+        except IndexError:
+            print('Please select a song!')
 
 def play():
     global trkname
@@ -48,12 +38,11 @@ def play():
         trkname.set((str(songs[trkno])).replace(".mp3",""))
     else:
         pygame.mixer.music.unpause()
-    
+
 def stop():
     global pi
     pygame.mixer.music.pause()
     pi=1
-
 
 def nexttrk():
     global trkname
@@ -63,7 +52,6 @@ def nexttrk():
     pygame.mixer.music.load(songs[trkno])
     pygame.mixer.music.play()
     trkname.set((str(songs[trkno])).replace(".mp3",""))
-    
 
 def prevtrk():
     global trkname
@@ -74,7 +62,6 @@ def prevtrk():
     pygame.mixer.music.play()
     trkname.set((str(songs[trkno])).replace(".mp3",""))
 
-
 def voli():
     global vol
     vol=pygame.mixer.music.get_volume()
@@ -82,7 +69,6 @@ def voli():
     if vol>=0.9921875:
         vol = 0.9921875
     pygame.mixer.music.set_volume(vol)
-
 
 def vold():
     global vol
@@ -107,6 +93,5 @@ Label(master,textvariable=trkname,font=font1).grid(row=1,column=4)
 Button(master,text=' + ',command=voli).grid(row=2,column=0,sticky=W,pady=4)
 Button(master,text=' - ',command=vold).grid(row=2,column=3,sticky=W,pady=4)
 Button(master,text='Browse',command=browse).grid(row=2,column=4,sticky=W,pady=4)
-
 
 master.mainloop()
