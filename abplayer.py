@@ -22,16 +22,11 @@ def browse():
     for index,song in enumerate(songs):
         print('{}. {}'.format(index,song))
     pygame.mixer.init()
-    pygame.mixer.music.load(songs[0])
-
-dir = filedialog.askdirectory()
-os.chdir(dir)
-for i in os.listdir(dir):
-    if i.endswith(".mp3"):
-        songs.append(i)
-print(songs)
-pygame.mixer.init()
-pygame.mixer.music.load(songs[0])
+    if len(songs)>=1:
+        try:
+            pygame.mixer.music.load(songs[0])
+        except IndexError:
+            print('Please select a song!')
 
 def play():
     global trkname
