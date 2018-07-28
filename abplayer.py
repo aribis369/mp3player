@@ -9,6 +9,7 @@ master = Tk()
 master.minsize(360,70)
 master.title("AB369Player")
 
+pi=0
 trkno = 0
 songs = []
 def browse():
