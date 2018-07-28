@@ -1,11 +1,9 @@
-from Tkinter import *
+from tkinter import *
+from tkinter import filedialog
 import os
 import pygame
-import tkFileDialog
 import numpy as np
 import pandas as pd
-
-
 
 master = Tk()
 master.minsize(360,70)
@@ -17,24 +15,24 @@ def browse():
     global songs
     global dir
     songs=[]
-    dir=tkFileDialog.askdirectory()
+    dir=filedialog.askdirectory()
     os.chdir(dir)
     for i in os.listdir(dir):
         if i.endswith(".mp3"):
             songs.append(i)
-    print songs
+    print(songs)
     pygame.mixer.init()
     pygame.mixer.music.load(songs[0])
 
 a=np.zeros(56)
-print a
+print(a)
 
-dir = tkFileDialog.askdirectory()
+dir = filedialog.askdirectory()
 os.chdir(dir)
 for i in os.listdir(dir):
     if i.endswith(".mp3"):
         songs.append(i)
-print songs
+print(songs)
 pygame.mixer.init()
 pygame.mixer.music.load(songs[0])
 
@@ -48,7 +46,7 @@ def play():
         trkname.set((str(songs[trkno])).replace(".mp3",""))
     else:
         pygame.mixer.music.unpause()
-    
+
 def stop():
     global pi
     pygame.mixer.music.pause()
@@ -63,7 +61,7 @@ def nexttrk():
     pygame.mixer.music.load(songs[trkno])
     pygame.mixer.music.play()
     trkname.set((str(songs[trkno])).replace(".mp3",""))
-    
+
 
 def prevtrk():
     global trkname
